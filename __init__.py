@@ -1,5 +1,4 @@
 # plugins/weibo_forwarder/__init__.py
-# data save to: data/weibo_forwarder/*
 
 __plugin_name__ = '微博转发'
 __plugin_usage__ = r"""
@@ -50,15 +49,7 @@ follow_list:
 '''
 
 
-class Singleton(object):  # 单例
-    def __new__(cls, *args, **kwargs):
-        if not hasattr(cls, '_instance'):
-            orig = super(Singleton, cls)
-            cls._instance = orig.__new__(cls, *args, **kwargs)
-        return cls._instance
-
-
-class FollowManager(Singleton):
+class FollowManager(util.Singleton):
     __follow_list = None
     __record_list = None
 
